@@ -1,0 +1,63 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "projectOrange.Models", "projectOrange.Models\projectOrange.Models.csproj", "{7A93DBA3-1F88-4275-8DA6-3C474902FA36}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "projectOrange.Utilities", "projectOrange.Utilities\projectOrange.Utilities.csproj", "{D52E3069-6800-4FF6-9AD9-9DB0A4271AC3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "projectOrange.Services", "projectOrange.Services\projectOrange.Services.csproj", "{34E2AA4D-BA5D-4F66-87FF-C349F42E48A7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "projectOrange.BusinessDataLogic", "projectOrange.BusinessDataLogic\projectOrange.BusinessDataLogic.csproj", "{2B592F26-832B-4B91-941E-0EA49C7FDA96}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "projectOrange.Web", "projectOrange.Web\projectOrange.Web.csproj", "{D3B36099-39E0-4ED9-B7A4-ECE49C610F55}"
+	ProjectSection(ProjectDependencies) = postProject
+		{34E2AA4D-BA5D-4F66-87FF-C349F42E48A7} = {34E2AA4D-BA5D-4F66-87FF-C349F42E48A7}
+	EndProjectSection
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "projectOrange.Tests", "projectOrange.Tests\projectOrange.Tests.vbproj", "{74FF71DF-CA91-438E-8D75-C9349EC415AB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D3703929-3FB8-4577-8F62-DFD082091660}"
+	ProjectSection(SolutionItems) = preProject
+		Local.testsettings = Local.testsettings
+		projectOrange.vsmdi = projectOrange.vsmdi
+		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = projectOrange.vsmdi
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7A93DBA3-1F88-4275-8DA6-3C474902FA36}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A93DBA3-1F88-4275-8DA6-3C474902FA36}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A93DBA3-1F88-4275-8DA6-3C474902FA36}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A93DBA3-1F88-4275-8DA6-3C474902FA36}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D52E3069-6800-4FF6-9AD9-9DB0A4271AC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D52E3069-6800-4FF6-9AD9-9DB0A4271AC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D52E3069-6800-4FF6-9AD9-9DB0A4271AC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D52E3069-6800-4FF6-9AD9-9DB0A4271AC3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{34E2AA4D-BA5D-4F66-87FF-C349F42E48A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34E2AA4D-BA5D-4F66-87FF-C349F42E48A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34E2AA4D-BA5D-4F66-87FF-C349F42E48A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34E2AA4D-BA5D-4F66-87FF-C349F42E48A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B592F26-832B-4B91-941E-0EA49C7FDA96}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B592F26-832B-4B91-941E-0EA49C7FDA96}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B592F26-832B-4B91-941E-0EA49C7FDA96}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B592F26-832B-4B91-941E-0EA49C7FDA96}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D3B36099-39E0-4ED9-B7A4-ECE49C610F55}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3B36099-39E0-4ED9-B7A4-ECE49C610F55}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3B36099-39E0-4ED9-B7A4-ECE49C610F55}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3B36099-39E0-4ED9-B7A4-ECE49C610F55}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74FF71DF-CA91-438E-8D75-C9349EC415AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74FF71DF-CA91-438E-8D75-C9349EC415AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74FF71DF-CA91-438E-8D75-C9349EC415AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74FF71DF-CA91-438E-8D75-C9349EC415AB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

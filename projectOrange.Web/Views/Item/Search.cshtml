@@ -1,0 +1,55 @@
+﻿@model IEnumerable<projectOrange.Web.InventoryService.BasicItem>
+
+@{
+	ViewBag.Title = "Search";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Items: Browse</h2>
+	
+<div class="optionsbox">
+	<h3>Filter Criteria
+		<img id="filterExpander" class="expanderButton" src="@Url.Content("~/content/themes/base/images/white_down_arrow.png")" alt="Expand/Contract" />
+	</h3>
+	<form id="filterForm" action="#">
+		<label for="itemCodeInput">Item Code:</label>
+		<input id="itemCodeInput" type="text" class="hiddenInput" /><br />
+
+		<input id="filterButton" type="button" value="Go" />
+	</form>
+</div>
+
+<p>
+	@Html.ActionLink("Create New", "Create")
+</p>
+
+<h4>Item Results</h4>
+
+<table id="itemTable">
+	<tr>
+		<th>
+			Code
+		</th>
+		<th>
+			Name
+		</th>
+		<th></th>
+	</tr>
+
+	@foreach (var item in Model) {
+	<tr>
+		<td>
+			@Html.DisplayFor(modelItem => item.Code)
+		</td>
+		<td>
+			@Html.DisplayFor(modelItem => item.Name)
+		</td>
+		<td>
+			@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+			@Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+			@Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+		</td>
+	</tr>
+	}
+
+</table>

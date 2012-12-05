@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="projectOrange.Services.Read.Inventory" CodeBehind="Inventory.svc.cs" %>

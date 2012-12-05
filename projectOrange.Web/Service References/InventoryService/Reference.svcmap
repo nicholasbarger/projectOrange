@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="eb98cfc7-9416-4991-ac66-c2359b49ba47" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>true</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:25187/Read/Inventory.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="Inventory.wsdl" MetadataType="Wsdl" ID="bd788ad9-eb79-443f-90af-2e726c8e0de1" SourceId="1" SourceUrl="http://localhost:25187/Read/Inventory.svc?wsdl" />
+    <MetadataFile FileName="Inventory.disco" MetadataType="Disco" ID="602684d4-5319-4015-875d-d3a4f7fe24c4" SourceId="1" SourceUrl="http://localhost:25187/Read/Inventory.svc?disco" />
+    <MetadataFile FileName="Inventory.xsd" MetadataType="Schema" ID="c2253eae-74fa-4672-bf13-002b64b55d95" SourceId="1" SourceUrl="http://localhost:25187/Read/Inventory.svc?xsd=xsd0" />
+    <MetadataFile FileName="Inventory1.xsd" MetadataType="Schema" ID="26d47791-b894-49a4-9538-9641ab7fcc9d" SourceId="1" SourceUrl="http://localhost:25187/Read/Inventory.svc?xsd=xsd2" />
+    <MetadataFile FileName="Inventory2.xsd" MetadataType="Schema" ID="fdd8f55f-22bb-431d-a778-d5eae3560d03" SourceId="1" SourceUrl="http://localhost:25187/Read/Inventory.svc?xsd=xsd1" />
+    <MetadataFile FileName="Inventory1.wsdl" MetadataType="Wsdl" ID="0a0a5c83-9c4a-4122-a34a-2348e46fb3a3" SourceId="1" SourceUrl="http://localhost:25187/Read/Inventory.svc?wsdl=wsdl0" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

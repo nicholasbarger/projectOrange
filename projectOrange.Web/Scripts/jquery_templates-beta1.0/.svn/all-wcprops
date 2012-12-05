@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/orangeclarksoftware/!svn/ver/21/trunk/ui/utils/jquery_templates-beta1.0
+END
+.gitignore
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/orangeclarksoftware/!svn/ver/21/trunk/ui/utils/jquery_templates-beta1.0/.gitignore
+END
+jquery.tmpl.js
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/orangeclarksoftware/!svn/ver/21/trunk/ui/utils/jquery_templates-beta1.0/jquery.tmpl.js
+END
+jquery.tmpl.min.js
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/orangeclarksoftware/!svn/ver/21/trunk/ui/utils/jquery_templates-beta1.0/jquery.tmpl.min.js
+END
+jquery.tmplPlus.js
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/orangeclarksoftware/!svn/ver/21/trunk/ui/utils/jquery_templates-beta1.0/jquery.tmplPlus.js
+END
+jquery.tmplPlus.min.js
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/orangeclarksoftware/!svn/ver/21/trunk/ui/utils/jquery_templates-beta1.0/jquery.tmplPlus.min.js
+END
+README.md
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/orangeclarksoftware/!svn/ver/21/trunk/ui/utils/jquery_templates-beta1.0/README.md
+END

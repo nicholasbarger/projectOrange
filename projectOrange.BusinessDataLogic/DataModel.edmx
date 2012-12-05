@@ -1,0 +1,1388 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="OrangeModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="OrangeModelStoreContainer">
+          <EntitySet Name="Currencies" EntityType="OrangeModel.Store.Currencies" store:Type="Tables" Schema="Common" />
+          <EntitySet Name="Descriptors" EntityType="OrangeModel.Store.Descriptors" store:Type="Tables" Schema="Common" />
+          <EntitySet Name="LanguageDescriptors" EntityType="OrangeModel.Store.LanguageDescriptors" store:Type="Tables" Schema="Common" />
+          <EntitySet Name="Languages" EntityType="OrangeModel.Store.Languages" store:Type="Tables" Schema="Common" />
+          <EntitySet Name="Status" EntityType="OrangeModel.Store.Status" store:Type="Tables" Schema="Common" />
+          <EntitySet Name="StatusGroups" EntityType="OrangeModel.Store.StatusGroups" store:Type="Tables" Schema="Common" />
+          <EntitySet Name="UOMs" EntityType="OrangeModel.Store.UOMs" store:Type="Tables" Schema="Common" />
+          <EntitySet Name="ItemCatalogMap" EntityType="OrangeModel.Store.ItemCatalogMap" store:Type="Tables" Schema="Inventory" />
+          <EntitySet Name="ItemCatalogs" EntityType="OrangeModel.Store.ItemCatalogs" store:Type="Tables" Schema="Inventory" />
+          <EntitySet Name="ItemCategories" EntityType="OrangeModel.Store.ItemCategories" store:Type="Tables" Schema="Inventory" />
+          <EntitySet Name="ItemCategoryHierarchyMap" EntityType="OrangeModel.Store.ItemCategoryHierarchyMap" store:Type="Tables" store:Schema="Inventory" store:Name="ItemCategoryHierarchyMap">
+            <DefiningQuery>SELECT 
+      [ItemCategoryHierarchyMap].[ItemCategoryId] AS [ItemCategoryId], 
+      [ItemCategoryHierarchyMap].[ItemCategoryRefId] AS [ItemCategoryRefId]
+      FROM [Inventory].[ItemCategoryHierarchyMap] AS [ItemCategoryHierarchyMap]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ItemCategoryMap" EntityType="OrangeModel.Store.ItemCategoryMap" store:Type="Tables" Schema="Inventory" />
+          <EntitySet Name="ItemContent" EntityType="OrangeModel.Store.ItemContent" store:Type="Tables" Schema="Inventory" />
+          <EntitySet Name="Items" EntityType="OrangeModel.Store.Items" store:Type="Tables" Schema="Inventory" />
+          <EntitySet Name="ItemBasePricing" EntityType="OrangeModel.Store.ItemBasePricing" store:Type="Tables" Schema="Sales" />
+          <AssociationSet Name="FK_Currencies_Descriptors" Association="OrangeModel.Store.FK_Currencies_Descriptors">
+            <End Role="Descriptors" EntitySet="Descriptors" />
+            <End Role="Currencies" EntitySet="Currencies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Currencies_Status" Association="OrangeModel.Store.FK_Currencies_Status">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="Currencies" EntitySet="Currencies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemBasePricing_Currencies" Association="OrangeModel.Store.FK_ItemBasePricing_Currencies">
+            <End Role="Currencies" EntitySet="Currencies" />
+            <End Role="ItemBasePricing" EntitySet="ItemBasePricing" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemBasePricing_Items" Association="OrangeModel.Store.FK_ItemBasePricing_Items">
+            <End Role="Items" EntitySet="Items" />
+            <End Role="ItemBasePricing" EntitySet="ItemBasePricing" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemCatalogMap_ItemCatalogs" Association="OrangeModel.Store.FK_ItemCatalogMap_ItemCatalogs">
+            <End Role="ItemCatalogs" EntitySet="ItemCatalogs" />
+            <End Role="ItemCatalogMap" EntitySet="ItemCatalogMap" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemCatalogMap_Items" Association="OrangeModel.Store.FK_ItemCatalogMap_Items">
+            <End Role="Items" EntitySet="Items" />
+            <End Role="ItemCatalogMap" EntitySet="ItemCatalogMap" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemCatalogs_LanguageDescriptors" Association="OrangeModel.Store.FK_ItemCatalogs_LanguageDescriptors">
+            <End Role="LanguageDescriptors" EntitySet="LanguageDescriptors" />
+            <End Role="ItemCatalogs" EntitySet="ItemCatalogs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemCatalogs_Status" Association="OrangeModel.Store.FK_ItemCatalogs_Status">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="ItemCatalogs" EntitySet="ItemCatalogs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemCategories_LanguageDescriptors" Association="OrangeModel.Store.FK_ItemCategories_LanguageDescriptors">
+            <End Role="LanguageDescriptors" EntitySet="LanguageDescriptors" />
+            <End Role="ItemCategories" EntitySet="ItemCategories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemCategories_Status" Association="OrangeModel.Store.FK_ItemCategories_Status">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="ItemCategories" EntitySet="ItemCategories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemCategoryHierarchyMap_ItemCategories" Association="OrangeModel.Store.FK_ItemCategoryHierarchyMap_ItemCategories">
+            <End Role="ItemCategories" EntitySet="ItemCategories" />
+            <End Role="ItemCategoryHierarchyMap" EntitySet="ItemCategoryHierarchyMap" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemCategoryHierarchyMap_ItemCategories1" Association="OrangeModel.Store.FK_ItemCategoryHierarchyMap_ItemCategories1">
+            <End Role="ItemCategories" EntitySet="ItemCategories" />
+            <End Role="ItemCategoryHierarchyMap" EntitySet="ItemCategoryHierarchyMap" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemCategoryMap_ItemCategories" Association="OrangeModel.Store.FK_ItemCategoryMap_ItemCategories">
+            <End Role="ItemCategories" EntitySet="ItemCategories" />
+            <End Role="ItemCategoryMap" EntitySet="ItemCategoryMap" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemCategoryMap_Items" Association="OrangeModel.Store.FK_ItemCategoryMap_Items">
+            <End Role="Items" EntitySet="Items" />
+            <End Role="ItemCategoryMap" EntitySet="ItemCategoryMap" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemContent_Items" Association="OrangeModel.Store.FK_ItemContent_Items">
+            <End Role="Items" EntitySet="Items" />
+            <End Role="ItemContent" EntitySet="ItemContent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemContent_Languages" Association="OrangeModel.Store.FK_ItemContent_Languages">
+            <End Role="Languages" EntitySet="Languages" />
+            <End Role="ItemContent" EntitySet="ItemContent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Items_Status" Association="OrangeModel.Store.FK_Items_Status">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="Items" EntitySet="Items" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Items_UOMs" Association="OrangeModel.Store.FK_Items_UOMs">
+            <End Role="UOMs" EntitySet="UOMs" />
+            <End Role="Items" EntitySet="Items" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LanguageDescriptors_Descriptors" Association="OrangeModel.Store.FK_LanguageDescriptors_Descriptors">
+            <End Role="Descriptors" EntitySet="Descriptors" />
+            <End Role="LanguageDescriptors" EntitySet="LanguageDescriptors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LanguageDescriptors_Languages" Association="OrangeModel.Store.FK_LanguageDescriptors_Languages">
+            <End Role="Languages" EntitySet="Languages" />
+            <End Role="LanguageDescriptors" EntitySet="LanguageDescriptors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Languages_Status" Association="OrangeModel.Store.FK_Languages_Status">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="Languages" EntitySet="Languages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Status_StatusGroups" Association="OrangeModel.Store.FK_Status_StatusGroups">
+            <End Role="StatusGroups" EntitySet="StatusGroups" />
+            <End Role="Status" EntitySet="Status" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UOMs_Status" Association="OrangeModel.Store.FK_UOMs_Status">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="UOMs" EntitySet="UOMs" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Currencies">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="StatusId" Type="int" Nullable="false" />
+          <Property Name="DescriptorId" Type="int" Nullable="false" />
+          <Property Name="Code" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
+          <Property Name="Modified" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Descriptors">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
+          <Property Name="Modified" Type="datetime" />
+        </EntityType>
+        <EntityType Name="LanguageDescriptors">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="DescriptorId" Type="int" Nullable="false" />
+          <Property Name="LanguageId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="BriefDescription" Type="varchar" MaxLength="255" />
+          <Property Name="LongDescription" Type="varchar" MaxLength="1000" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
+          <Property Name="Modified" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Languages">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="StatusId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Code" Type="varchar" Nullable="false" MaxLength="5" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
+          <Property Name="Modified" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="StatusGroupId" Type="int" Nullable="false" />
+          <Property Name="Code" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
+          <Property Name="Modified" Type="datetime" />
+        </EntityType>
+        <EntityType Name="StatusGroups">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="DescriptorId" Type="int" Nullable="false" />
+          <Property Name="Code" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
+          <Property Name="Modified" Type="datetime" />
+        </EntityType>
+        <EntityType Name="UOMs">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="StatusId" Type="int" Nullable="false" />
+          <Property Name="DescriptorId" Type="int" Nullable="false" />
+          <Property Name="Code" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
+          <Property Name="Modified" Type="datetime" />
+        </EntityType>
+        <EntityType Name="ItemCatalogMap">
+          <Key>
+            <PropertyRef Name="ItemId" />
+            <PropertyRef Name="ItemCatalogId" />
+          </Key>
+          <Property Name="ItemId" Type="int" Nullable="false" />
+          <Property Name="ItemCatalogId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ItemCatalogs">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="LanguageDescriptorId" Type="int" Nullable="false" />
+          <Property Name="StatusId" Type="int" Nullable="false" />
+          <Property Name="Code" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
+          <Property Name="Modified" Type="datetime" />
+        </EntityType>
+        <EntityType Name="ItemCategories">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="StatusId" Type="int" Nullable="false" />
+          <Property Name="LanguageDescriptorId" Type="int" Nullable="false" />
+          <Property Name="Code" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
+          <Property Name="Modified" Type="datetime" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'Orange.Inventory.ItemCategoryHierarchyMap' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="ItemCategoryHierarchyMap">
+          <Key>
+            <PropertyRef Name="ItemCategoryId" />
+          </Key>
+          <Property Name="ItemCategoryId" Type="int" Nullable="false" />
+          <Property Name="ItemCategoryRefId" Type="int" />
+        </EntityType>
+        <EntityType Name="ItemCategoryMap">
+          <Key>
+            <PropertyRef Name="ItemId" />
+            <PropertyRef Name="ItemCategoryId" />
+          </Key>
+          <Property Name="ItemId" Type="int" Nullable="false" />
+          <Property Name="ItemCategoryId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ItemContent">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ItemId" Type="int" Nullable="false" />
+          <Property Name="LanguageId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="BriefDescription" Type="varchar" MaxLength="255" />
+          <Property Name="LongDescription" Type="varchar" MaxLength="1000" />
+          <Property Name="HtmlContent" Type="varchar(max)" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
+          <Property Name="Modified" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Items">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="StatusId" Type="int" Nullable="false" />
+          <Property Name="UomId" Type="int" Nullable="false" />
+          <Property Name="Code" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Revision" Type="varchar" MaxLength="10" />
+          <Property Name="IsPurchased" Type="bit" Nullable="false" />
+          <Property Name="IsManufactured" Type="bit" Nullable="false" />
+          <Property Name="IsSaleable" Type="bit" Nullable="false" />
+          <Property Name="IsDigital" Type="bit" Nullable="false" />
+          <Property Name="IsUnlimitedQuantity" Type="bit" Nullable="false" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
+          <Property Name="Modified" Type="datetime" />
+        </EntityType>
+        <EntityType Name="ItemBasePricing">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ItemId" Type="int" Nullable="false" />
+          <Property Name="CurrencyId" Type="int" Nullable="false" />
+          <Property Name="PerUnitPrice" Type="money" Nullable="false" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
+          <Property Name="Modified" Type="datetime" />
+        </EntityType>
+        <Association Name="FK_Currencies_Descriptors">
+          <End Role="Descriptors" Type="OrangeModel.Store.Descriptors" Multiplicity="1" />
+          <End Role="Currencies" Type="OrangeModel.Store.Currencies" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Descriptors">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Currencies">
+              <PropertyRef Name="DescriptorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Currencies_Status">
+          <End Role="Status" Type="OrangeModel.Store.Status" Multiplicity="1" />
+          <End Role="Currencies" Type="OrangeModel.Store.Currencies" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Currencies">
+              <PropertyRef Name="StatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemBasePricing_Currencies">
+          <End Role="Currencies" Type="OrangeModel.Store.Currencies" Multiplicity="1" />
+          <End Role="ItemBasePricing" Type="OrangeModel.Store.ItemBasePricing" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currencies">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ItemBasePricing">
+              <PropertyRef Name="CurrencyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemBasePricing_Items">
+          <End Role="Items" Type="OrangeModel.Store.Items" Multiplicity="1" />
+          <End Role="ItemBasePricing" Type="OrangeModel.Store.ItemBasePricing" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Items">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ItemBasePricing">
+              <PropertyRef Name="ItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemCatalogMap_ItemCatalogs">
+          <End Role="ItemCatalogs" Type="OrangeModel.Store.ItemCatalogs" Multiplicity="1" />
+          <End Role="ItemCatalogMap" Type="OrangeModel.Store.ItemCatalogMap" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ItemCatalogs">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ItemCatalogMap">
+              <PropertyRef Name="ItemCatalogId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemCatalogMap_Items">
+          <End Role="Items" Type="OrangeModel.Store.Items" Multiplicity="1" />
+          <End Role="ItemCatalogMap" Type="OrangeModel.Store.ItemCatalogMap" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Items">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ItemCatalogMap">
+              <PropertyRef Name="ItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemCatalogs_LanguageDescriptors">
+          <End Role="LanguageDescriptors" Type="OrangeModel.Store.LanguageDescriptors" Multiplicity="1" />
+          <End Role="ItemCatalogs" Type="OrangeModel.Store.ItemCatalogs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LanguageDescriptors">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ItemCatalogs">
+              <PropertyRef Name="LanguageDescriptorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemCatalogs_Status">
+          <End Role="Status" Type="OrangeModel.Store.Status" Multiplicity="1" />
+          <End Role="ItemCatalogs" Type="OrangeModel.Store.ItemCatalogs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ItemCatalogs">
+              <PropertyRef Name="StatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemCategories_LanguageDescriptors">
+          <End Role="LanguageDescriptors" Type="OrangeModel.Store.LanguageDescriptors" Multiplicity="1" />
+          <End Role="ItemCategories" Type="OrangeModel.Store.ItemCategories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LanguageDescriptors">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ItemCategories">
+              <PropertyRef Name="LanguageDescriptorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemCategories_Status">
+          <End Role="Status" Type="OrangeModel.Store.Status" Multiplicity="1" />
+          <End Role="ItemCategories" Type="OrangeModel.Store.ItemCategories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ItemCategories">
+              <PropertyRef Name="StatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemCategoryHierarchyMap_ItemCategories">
+          <End Role="ItemCategories" Type="OrangeModel.Store.ItemCategories" Multiplicity="1" />
+          <End Role="ItemCategoryHierarchyMap" Type="OrangeModel.Store.ItemCategoryHierarchyMap" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="ItemCategories">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ItemCategoryHierarchyMap">
+              <PropertyRef Name="ItemCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemCategoryHierarchyMap_ItemCategories1">
+          <End Role="ItemCategories" Type="OrangeModel.Store.ItemCategories" Multiplicity="0..1" />
+          <End Role="ItemCategoryHierarchyMap" Type="OrangeModel.Store.ItemCategoryHierarchyMap" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ItemCategories">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ItemCategoryHierarchyMap">
+              <PropertyRef Name="ItemCategoryRefId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemCategoryMap_ItemCategories">
+          <End Role="ItemCategories" Type="OrangeModel.Store.ItemCategories" Multiplicity="1" />
+          <End Role="ItemCategoryMap" Type="OrangeModel.Store.ItemCategoryMap" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ItemCategories">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ItemCategoryMap">
+              <PropertyRef Name="ItemCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemCategoryMap_Items">
+          <End Role="Items" Type="OrangeModel.Store.Items" Multiplicity="1" />
+          <End Role="ItemCategoryMap" Type="OrangeModel.Store.ItemCategoryMap" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Items">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ItemCategoryMap">
+              <PropertyRef Name="ItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemContent_Items">
+          <End Role="Items" Type="OrangeModel.Store.Items" Multiplicity="1" />
+          <End Role="ItemContent" Type="OrangeModel.Store.ItemContent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Items">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ItemContent">
+              <PropertyRef Name="ItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemContent_Languages">
+          <End Role="Languages" Type="OrangeModel.Store.Languages" Multiplicity="1" />
+          <End Role="ItemContent" Type="OrangeModel.Store.ItemContent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Languages">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ItemContent">
+              <PropertyRef Name="LanguageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Items_Status">
+          <End Role="Status" Type="OrangeModel.Store.Status" Multiplicity="1" />
+          <End Role="Items" Type="OrangeModel.Store.Items" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Items">
+              <PropertyRef Name="StatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Items_UOMs">
+          <End Role="UOMs" Type="OrangeModel.Store.UOMs" Multiplicity="1" />
+          <End Role="Items" Type="OrangeModel.Store.Items" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UOMs">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Items">
+              <PropertyRef Name="UomId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LanguageDescriptors_Descriptors">
+          <End Role="Descriptors" Type="OrangeModel.Store.Descriptors" Multiplicity="1" />
+          <End Role="LanguageDescriptors" Type="OrangeModel.Store.LanguageDescriptors" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Descriptors">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LanguageDescriptors">
+              <PropertyRef Name="DescriptorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LanguageDescriptors_Languages">
+          <End Role="Languages" Type="OrangeModel.Store.Languages" Multiplicity="1" />
+          <End Role="LanguageDescriptors" Type="OrangeModel.Store.LanguageDescriptors" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Languages">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LanguageDescriptors">
+              <PropertyRef Name="LanguageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Languages_Status">
+          <End Role="Status" Type="OrangeModel.Store.Status" Multiplicity="1" />
+          <End Role="Languages" Type="OrangeModel.Store.Languages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Languages">
+              <PropertyRef Name="StatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Status_StatusGroups">
+          <End Role="StatusGroups" Type="OrangeModel.Store.StatusGroups" Multiplicity="1" />
+          <End Role="Status" Type="OrangeModel.Store.Status" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StatusGroups">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Status">
+              <PropertyRef Name="StatusGroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UOMs_Status">
+          <End Role="Status" Type="OrangeModel.Store.Status" Multiplicity="1" />
+          <End Role="UOMs" Type="OrangeModel.Store.UOMs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UOMs">
+              <PropertyRef Name="StatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="OrangeModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="OrangeDB" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Currencies" EntityType="OrangeModel.Currency" />
+          <EntitySet Name="Descriptors" EntityType="OrangeModel.Descriptor" />
+          <EntitySet Name="LanguageDescriptors" EntityType="OrangeModel.LanguageDescriptor" />
+          <EntitySet Name="Languages" EntityType="OrangeModel.Language" />
+          <EntitySet Name="Status" EntityType="OrangeModel.Status" />
+          <EntitySet Name="StatusGroups" EntityType="OrangeModel.StatusGroup" />
+          <EntitySet Name="UOMs" EntityType="OrangeModel.UOM" />
+          <EntitySet Name="ItemContents" EntityType="OrangeModel.ItemContent" />
+          <EntitySet Name="Items" EntityType="OrangeModel.Item" />
+          <EntitySet Name="ItemBasePricings" EntityType="OrangeModel.ItemBasePricing" />
+          <AssociationSet Name="FK_Currencies_Descriptors" Association="OrangeModel.FK_Currencies_Descriptors">
+            <End Role="Descriptors" EntitySet="Descriptors" />
+            <End Role="Currencies" EntitySet="Currencies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Currencies_Status" Association="OrangeModel.FK_Currencies_Status">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="Currencies" EntitySet="Currencies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemBasePricing_Currencies" Association="OrangeModel.FK_ItemBasePricing_Currencies">
+            <End Role="Currencies" EntitySet="Currencies" />
+            <End Role="ItemBasePricing" EntitySet="ItemBasePricings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemContent_Languages" Association="OrangeModel.FK_ItemContent_Languages">
+            <End Role="Languages" EntitySet="Languages" />
+            <End Role="ItemContent" EntitySet="ItemContents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Languages_Status" Association="OrangeModel.FK_Languages_Status">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="Languages" EntitySet="Languages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Items_Status" Association="OrangeModel.FK_Items_Status">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="Items" EntitySet="Items" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Status_StatusGroups" Association="OrangeModel.FK_Status_StatusGroups">
+            <End Role="StatusGroups" EntitySet="StatusGroups" />
+            <End Role="Status" EntitySet="Status" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UOMs_Status" Association="OrangeModel.FK_UOMs_Status">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="UOMs" EntitySet="UOMs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Items_UOMs" Association="OrangeModel.FK_Items_UOMs">
+            <End Role="UOMs" EntitySet="UOMs" />
+            <End Role="Items" EntitySet="Items" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemContent_Items" Association="OrangeModel.FK_ItemContent_Items">
+            <End Role="Items" EntitySet="Items" />
+            <End Role="ItemContent" EntitySet="ItemContents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemBasePricing_Items" Association="OrangeModel.FK_ItemBasePricing_Items">
+            <End Role="Items" EntitySet="Items" />
+            <End Role="ItemBasePricing" EntitySet="ItemBasePricings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LanguageDescriptors_Descriptors" Association="OrangeModel.FK_LanguageDescriptors_Descriptors">
+            <End Role="Descriptor" EntitySet="Descriptors" />
+            <End Role="LanguageDescriptor" EntitySet="LanguageDescriptors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LanguageDescriptors_Languages" Association="OrangeModel.FK_LanguageDescriptors_Languages">
+            <End Role="Language" EntitySet="Languages" />
+            <End Role="LanguageDescriptor" EntitySet="LanguageDescriptors" />
+          </AssociationSet>
+          <EntitySet Name="ItemCatalogs" EntityType="OrangeModel.ItemCatalog" />
+          <EntitySet Name="ItemCategories" EntityType="OrangeModel.ItemCategory" />
+          <EntitySet Name="ItemCategoryHierarchyMaps" EntityType="OrangeModel.ItemCategoryHierarchyMap" />
+          <AssociationSet Name="FK_ItemCatalogs_LanguageDescriptors" Association="OrangeModel.FK_ItemCatalogs_LanguageDescriptors">
+            <End Role="LanguageDescriptor" EntitySet="LanguageDescriptors" />
+            <End Role="ItemCatalog" EntitySet="ItemCatalogs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemCategories_LanguageDescriptors" Association="OrangeModel.FK_ItemCategories_LanguageDescriptors">
+            <End Role="LanguageDescriptor" EntitySet="LanguageDescriptors" />
+            <End Role="ItemCategory" EntitySet="ItemCategories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemCatalogs_Status" Association="OrangeModel.FK_ItemCatalogs_Status">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="ItemCatalog" EntitySet="ItemCatalogs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemCategories_Status" Association="OrangeModel.FK_ItemCategories_Status">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="ItemCategory" EntitySet="ItemCategories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemCategoryHierarchyMap_ItemCategories" Association="OrangeModel.FK_ItemCategoryHierarchyMap_ItemCategories">
+            <End Role="ItemCategory" EntitySet="ItemCategories" />
+            <End Role="ItemCategoryHierarchyMap" EntitySet="ItemCategoryHierarchyMaps" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemCategoryHierarchyMap_ItemCategories1" Association="OrangeModel.FK_ItemCategoryHierarchyMap_ItemCategories1">
+            <End Role="ItemCategory" EntitySet="ItemCategories" />
+            <End Role="ItemCategoryHierarchyMap" EntitySet="ItemCategoryHierarchyMaps" />
+          </AssociationSet>
+          <AssociationSet Name="ItemCatalogMap" Association="OrangeModel.ItemCatalogMap">
+            <End Role="ItemCatalog" EntitySet="ItemCatalogs" />
+            <End Role="Item" EntitySet="Items" />
+          </AssociationSet>
+          <AssociationSet Name="ItemCategoryMap" Association="OrangeModel.ItemCategoryMap">
+            <End Role="ItemCategory" EntitySet="ItemCategories" />
+            <End Role="Item" EntitySet="Items" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Currency">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StatusId" Type="Int32" Nullable="false" />
+          <Property Name="DescriptorId" Type="Int32" Nullable="false" />
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Created" Type="DateTime" Nullable="false" />
+          <Property Name="Modified" Type="DateTime" />
+          <NavigationProperty Name="Descriptor" Relationship="OrangeModel.FK_Currencies_Descriptors" FromRole="Currencies" ToRole="Descriptors" />
+          <NavigationProperty Name="Status" Relationship="OrangeModel.FK_Currencies_Status" FromRole="Currencies" ToRole="Status" />
+          <NavigationProperty Name="ItemBasePricings" Relationship="OrangeModel.FK_ItemBasePricing_Currencies" FromRole="Currencies" ToRole="ItemBasePricing" />
+        </EntityType>
+        <EntityType Name="Descriptor">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="Created" Type="DateTime" Nullable="false" />
+          <Property Name="Modified" Type="DateTime" />
+          <NavigationProperty Name="Currencies" Relationship="OrangeModel.FK_Currencies_Descriptors" FromRole="Descriptors" ToRole="Currencies" />
+          <NavigationProperty Name="LanguageDescriptors" Relationship="OrangeModel.FK_LanguageDescriptors_Descriptors" FromRole="Descriptor" ToRole="LanguageDescriptor" />
+        </EntityType>
+        <EntityType Name="LanguageDescriptor">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DescriptorId" Type="Int32" Nullable="false" />
+          <Property Name="LanguageId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="BriefDescription" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="LongDescription" Type="String" MaxLength="1000" Unicode="false" FixedLength="false" />
+          <Property Name="Created" Type="DateTime" Nullable="false" />
+          <Property Name="Modified" Type="DateTime" />
+          <NavigationProperty Name="Descriptor" Relationship="OrangeModel.FK_LanguageDescriptors_Descriptors" FromRole="LanguageDescriptor" ToRole="Descriptor" />
+          <NavigationProperty Name="Language" Relationship="OrangeModel.FK_LanguageDescriptors_Languages" FromRole="LanguageDescriptor" ToRole="Language" />
+          <NavigationProperty Name="ItemCatalogs" Relationship="OrangeModel.FK_ItemCatalogs_LanguageDescriptors" FromRole="LanguageDescriptor" ToRole="ItemCatalog" />
+          <NavigationProperty Name="ItemCategories" Relationship="OrangeModel.FK_ItemCategories_LanguageDescriptors" FromRole="LanguageDescriptor" ToRole="ItemCategory" />
+        </EntityType>
+        <EntityType Name="Language">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StatusId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="5" Unicode="false" FixedLength="false" />
+          <Property Name="Created" Type="DateTime" Nullable="false" />
+          <Property Name="Modified" Type="DateTime" />
+          <NavigationProperty Name="ItemContents" Relationship="OrangeModel.FK_ItemContent_Languages" FromRole="Languages" ToRole="ItemContent" />
+          <NavigationProperty Name="Status" Relationship="OrangeModel.FK_Languages_Status" FromRole="Languages" ToRole="Status" />
+          <NavigationProperty Name="LanguageDescriptors" Relationship="OrangeModel.FK_LanguageDescriptors_Languages" FromRole="Language" ToRole="LanguageDescriptor" />
+        </EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StatusGroupId" Type="Int32" Nullable="false" />
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Created" Type="DateTime" Nullable="false" />
+          <Property Name="Modified" Type="DateTime" />
+          <NavigationProperty Name="Currencies" Relationship="OrangeModel.FK_Currencies_Status" FromRole="Status" ToRole="Currencies" />
+          <NavigationProperty Name="Languages" Relationship="OrangeModel.FK_Languages_Status" FromRole="Status" ToRole="Languages" />
+          <NavigationProperty Name="Items" Relationship="OrangeModel.FK_Items_Status" FromRole="Status" ToRole="Items" />
+          <NavigationProperty Name="StatusGroup" Relationship="OrangeModel.FK_Status_StatusGroups" FromRole="Status" ToRole="StatusGroups" />
+          <NavigationProperty Name="UOMs" Relationship="OrangeModel.FK_UOMs_Status" FromRole="Status" ToRole="UOMs" />
+          <NavigationProperty Name="ItemCatalogs" Relationship="OrangeModel.FK_ItemCatalogs_Status" FromRole="Status" ToRole="ItemCatalog" />
+          <NavigationProperty Name="ItemCategories" Relationship="OrangeModel.FK_ItemCategories_Status" FromRole="Status" ToRole="ItemCategory" />
+        </EntityType>
+        <EntityType Name="StatusGroup">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DescriptorId" Type="Int32" Nullable="false" />
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Created" Type="DateTime" Nullable="false" />
+          <Property Name="Modified" Type="DateTime" />
+          <NavigationProperty Name="Status" Relationship="OrangeModel.FK_Status_StatusGroups" FromRole="StatusGroups" ToRole="Status" />
+        </EntityType>
+        <EntityType Name="UOM">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StatusId" Type="Int32" Nullable="false" />
+          <Property Name="DescriptorId" Type="Int32" Nullable="false" />
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Created" Type="DateTime" Nullable="false" />
+          <Property Name="Modified" Type="DateTime" />
+          <NavigationProperty Name="Status" Relationship="OrangeModel.FK_UOMs_Status" FromRole="UOMs" ToRole="Status" />
+          <NavigationProperty Name="Items" Relationship="OrangeModel.FK_Items_UOMs" FromRole="UOMs" ToRole="Items" />
+        </EntityType>
+        <EntityType Name="ItemContent">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ItemId" Type="Int32" Nullable="false" />
+          <Property Name="LanguageId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="BriefDescription" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="LongDescription" Type="String" MaxLength="1000" Unicode="false" FixedLength="false" />
+          <Property Name="HtmlContent" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="Created" Type="DateTime" Nullable="false" />
+          <Property Name="Modified" Type="DateTime" />
+          <NavigationProperty Name="Language" Relationship="OrangeModel.FK_ItemContent_Languages" FromRole="ItemContent" ToRole="Languages" />
+          <NavigationProperty Name="Item" Relationship="OrangeModel.FK_ItemContent_Items" FromRole="ItemContent" ToRole="Items" />
+        </EntityType>
+        <EntityType Name="Item">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StatusId" Type="Int32" Nullable="false" />
+          <Property Name="UomId" Type="Int32" Nullable="false" />
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Revision" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="IsPurchased" Type="Boolean" Nullable="false" />
+          <Property Name="IsManufactured" Type="Boolean" Nullable="false" />
+          <Property Name="IsSaleable" Type="Boolean" Nullable="false" />
+          <Property Name="IsDigital" Type="Boolean" Nullable="false" />
+          <Property Name="IsUnlimitedQuantity" Type="Boolean" Nullable="false" />
+          <Property Name="Created" Type="DateTime" Nullable="false" />
+          <Property Name="Modified" Type="DateTime" />
+          <NavigationProperty Name="Status" Relationship="OrangeModel.FK_Items_Status" FromRole="Items" ToRole="Status" />
+          <NavigationProperty Name="UOM" Relationship="OrangeModel.FK_Items_UOMs" FromRole="Items" ToRole="UOMs" />
+          <NavigationProperty Name="ItemContents" Relationship="OrangeModel.FK_ItemContent_Items" FromRole="Items" ToRole="ItemContent" />
+          <NavigationProperty Name="ItemBasePricings" Relationship="OrangeModel.FK_ItemBasePricing_Items" FromRole="Items" ToRole="ItemBasePricing" />
+          <NavigationProperty Name="ItemCatalogs" Relationship="OrangeModel.ItemCatalogMap" FromRole="Item" ToRole="ItemCatalog" />
+          <NavigationProperty Name="ItemCategories" Relationship="OrangeModel.ItemCategoryMap" FromRole="Item" ToRole="ItemCategory" />
+        </EntityType>
+        <EntityType Name="ItemBasePricing">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ItemId" Type="Int32" Nullable="false" />
+          <Property Name="CurrencyId" Type="Int32" Nullable="false" />
+          <Property Name="PerUnitPrice" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="Created" Type="DateTime" Nullable="false" />
+          <Property Name="Modified" Type="DateTime" />
+          <NavigationProperty Name="Currency" Relationship="OrangeModel.FK_ItemBasePricing_Currencies" FromRole="ItemBasePricing" ToRole="Currencies" />
+          <NavigationProperty Name="Item" Relationship="OrangeModel.FK_ItemBasePricing_Items" FromRole="ItemBasePricing" ToRole="Items" />
+        </EntityType>
+        <Association Name="FK_Currencies_Descriptors">
+          <End Role="Descriptors" Type="OrangeModel.Descriptor" Multiplicity="1" />
+          <End Role="Currencies" Type="OrangeModel.Currency" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Descriptors">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Currencies">
+              <PropertyRef Name="DescriptorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Currencies_Status">
+          <End Role="Status" Type="OrangeModel.Status" Multiplicity="1" />
+          <End Role="Currencies" Type="OrangeModel.Currency" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Currencies">
+              <PropertyRef Name="StatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemBasePricing_Currencies">
+          <End Role="Currencies" Type="OrangeModel.Currency" Multiplicity="1" />
+          <End Role="ItemBasePricing" Type="OrangeModel.ItemBasePricing" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currencies">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ItemBasePricing">
+              <PropertyRef Name="CurrencyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemContent_Languages">
+          <End Role="Languages" Type="OrangeModel.Language" Multiplicity="1" />
+          <End Role="ItemContent" Type="OrangeModel.ItemContent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Languages">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ItemContent">
+              <PropertyRef Name="LanguageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Languages_Status">
+          <End Role="Status" Type="OrangeModel.Status" Multiplicity="1" />
+          <End Role="Languages" Type="OrangeModel.Language" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Languages">
+              <PropertyRef Name="StatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Items_Status">
+          <End Role="Status" Type="OrangeModel.Status" Multiplicity="1" />
+          <End Role="Items" Type="OrangeModel.Item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Items">
+              <PropertyRef Name="StatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Status_StatusGroups">
+          <End Role="StatusGroups" Type="OrangeModel.StatusGroup" Multiplicity="1" />
+          <End Role="Status" Type="OrangeModel.Status" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StatusGroups">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Status">
+              <PropertyRef Name="StatusGroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UOMs_Status">
+          <End Role="Status" Type="OrangeModel.Status" Multiplicity="1" />
+          <End Role="UOMs" Type="OrangeModel.UOM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UOMs">
+              <PropertyRef Name="StatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Items_UOMs">
+          <End Role="UOMs" Type="OrangeModel.UOM" Multiplicity="1" />
+          <End Role="Items" Type="OrangeModel.Item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UOMs">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Items">
+              <PropertyRef Name="UomId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemContent_Items">
+          <End Role="Items" Type="OrangeModel.Item" Multiplicity="1" />
+          <End Role="ItemContent" Type="OrangeModel.ItemContent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Items">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ItemContent">
+              <PropertyRef Name="ItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemBasePricing_Items">
+          <End Role="Items" Type="OrangeModel.Item" Multiplicity="1" />
+          <End Role="ItemBasePricing" Type="OrangeModel.ItemBasePricing" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Items">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ItemBasePricing">
+              <PropertyRef Name="ItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LanguageDescriptors_Descriptors">
+          <End Type="OrangeModel.Descriptor" Role="Descriptor" Multiplicity="1" />
+          <End Type="OrangeModel.LanguageDescriptor" Role="LanguageDescriptor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Descriptor">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LanguageDescriptor">
+              <PropertyRef Name="DescriptorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LanguageDescriptors_Languages">
+          <End Type="OrangeModel.Language" Role="Language" Multiplicity="1" />
+          <End Type="OrangeModel.LanguageDescriptor" Role="LanguageDescriptor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Language">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LanguageDescriptor">
+              <PropertyRef Name="LanguageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ItemCatalog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="LanguageDescriptorId" Nullable="false" />
+          <Property Type="Int32" Name="StatusId" Nullable="false" />
+          <Property Type="String" Name="Code" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="Created" Nullable="false" />
+          <Property Type="DateTime" Name="Modified" />
+          <NavigationProperty Name="LanguageDescriptor" Relationship="OrangeModel.FK_ItemCatalogs_LanguageDescriptors" FromRole="ItemCatalog" ToRole="LanguageDescriptor" />
+          <NavigationProperty Name="Status" Relationship="OrangeModel.FK_ItemCatalogs_Status" FromRole="ItemCatalog" ToRole="Status" />
+          <NavigationProperty Name="Items" Relationship="OrangeModel.ItemCatalogMap" FromRole="ItemCatalog" ToRole="Item" />
+        </EntityType>
+        <EntityType Name="ItemCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="StatusId" Nullable="false" />
+          <Property Type="Int32" Name="LanguageDescriptorId" Nullable="false" />
+          <Property Type="String" Name="Code" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="Created" Nullable="false" />
+          <Property Type="DateTime" Name="Modified" />
+          <NavigationProperty Name="LanguageDescriptor" Relationship="OrangeModel.FK_ItemCategories_LanguageDescriptors" FromRole="ItemCategory" ToRole="LanguageDescriptor" />
+          <NavigationProperty Name="Status" Relationship="OrangeModel.FK_ItemCategories_Status" FromRole="ItemCategory" ToRole="Status" />
+          <NavigationProperty Name="ItemCategoryHierarchyMap" Relationship="OrangeModel.FK_ItemCategoryHierarchyMap_ItemCategories" FromRole="ItemCategory" ToRole="ItemCategoryHierarchyMap" />
+          <NavigationProperty Name="ItemCategoryHierarchyMaps" Relationship="OrangeModel.FK_ItemCategoryHierarchyMap_ItemCategories1" FromRole="ItemCategory" ToRole="ItemCategoryHierarchyMap" />
+          <NavigationProperty Name="Items" Relationship="OrangeModel.ItemCategoryMap" FromRole="ItemCategory" ToRole="Item" />
+        </EntityType>
+        <EntityType Name="ItemCategoryHierarchyMap">
+          <Key>
+            <PropertyRef Name="ItemCategoryId" />
+          </Key>
+          <Property Type="Int32" Name="ItemCategoryId" Nullable="false" />
+          <Property Type="Int32" Name="ItemCategoryRefId" />
+          <NavigationProperty Name="ItemCategory" Relationship="OrangeModel.FK_ItemCategoryHierarchyMap_ItemCategories" FromRole="ItemCategoryHierarchyMap" ToRole="ItemCategory" />
+          <NavigationProperty Name="ItemCategory1" Relationship="OrangeModel.FK_ItemCategoryHierarchyMap_ItemCategories1" FromRole="ItemCategoryHierarchyMap" ToRole="ItemCategory" />
+        </EntityType>
+        <Association Name="FK_ItemCatalogs_LanguageDescriptors">
+          <End Type="OrangeModel.LanguageDescriptor" Role="LanguageDescriptor" Multiplicity="1" />
+          <End Type="OrangeModel.ItemCatalog" Role="ItemCatalog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LanguageDescriptor">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ItemCatalog">
+              <PropertyRef Name="LanguageDescriptorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemCategories_LanguageDescriptors">
+          <End Type="OrangeModel.LanguageDescriptor" Role="LanguageDescriptor" Multiplicity="1" />
+          <End Type="OrangeModel.ItemCategory" Role="ItemCategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LanguageDescriptor">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ItemCategory">
+              <PropertyRef Name="LanguageDescriptorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemCatalogs_Status">
+          <End Type="OrangeModel.Status" Role="Status" Multiplicity="1" />
+          <End Type="OrangeModel.ItemCatalog" Role="ItemCatalog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ItemCatalog">
+              <PropertyRef Name="StatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemCategories_Status">
+          <End Type="OrangeModel.Status" Role="Status" Multiplicity="1" />
+          <End Type="OrangeModel.ItemCategory" Role="ItemCategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ItemCategory">
+              <PropertyRef Name="StatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemCategoryHierarchyMap_ItemCategories">
+          <End Type="OrangeModel.ItemCategory" Role="ItemCategory" Multiplicity="1" />
+          <End Type="OrangeModel.ItemCategoryHierarchyMap" Role="ItemCategoryHierarchyMap" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="ItemCategory">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ItemCategoryHierarchyMap">
+              <PropertyRef Name="ItemCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemCategoryHierarchyMap_ItemCategories1">
+          <End Type="OrangeModel.ItemCategory" Role="ItemCategory" Multiplicity="0..1" />
+          <End Type="OrangeModel.ItemCategoryHierarchyMap" Role="ItemCategoryHierarchyMap" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ItemCategory">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ItemCategoryHierarchyMap">
+              <PropertyRef Name="ItemCategoryRefId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ItemCatalogMap">
+          <End Type="OrangeModel.ItemCatalog" Role="ItemCatalog" Multiplicity="*" />
+          <End Type="OrangeModel.Item" Role="Item" Multiplicity="*" />
+        </Association>
+        <Association Name="ItemCategoryMap">
+          <End Type="OrangeModel.ItemCategory" Role="ItemCategory" Multiplicity="*" />
+          <End Type="OrangeModel.Item" Role="Item" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="OrangeModelStoreContainer" CdmEntityContainer="OrangeDB">
+          <EntitySetMapping Name="Currencies"><EntityTypeMapping TypeName="OrangeModel.Currency"><MappingFragment StoreEntitySet="Currencies">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+            <ScalarProperty Name="DescriptorId" ColumnName="DescriptorId" />
+            <ScalarProperty Name="Code" ColumnName="Code" />
+            <ScalarProperty Name="Created" ColumnName="Created" />
+            <ScalarProperty Name="Modified" ColumnName="Modified" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Descriptors"><EntityTypeMapping TypeName="OrangeModel.Descriptor"><MappingFragment StoreEntitySet="Descriptors">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="Code" ColumnName="Code" />
+            <ScalarProperty Name="Created" ColumnName="Created" />
+            <ScalarProperty Name="Modified" ColumnName="Modified" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="LanguageDescriptors"><EntityTypeMapping TypeName="OrangeModel.LanguageDescriptor"><MappingFragment StoreEntitySet="LanguageDescriptors">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="DescriptorId" ColumnName="DescriptorId" />
+            <ScalarProperty Name="LanguageId" ColumnName="LanguageId" />
+            <ScalarProperty Name="Name" ColumnName="Name" />
+            <ScalarProperty Name="BriefDescription" ColumnName="BriefDescription" />
+            <ScalarProperty Name="LongDescription" ColumnName="LongDescription" />
+            <ScalarProperty Name="Created" ColumnName="Created" />
+            <ScalarProperty Name="Modified" ColumnName="Modified" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Languages"><EntityTypeMapping TypeName="OrangeModel.Language"><MappingFragment StoreEntitySet="Languages">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+            <ScalarProperty Name="Name" ColumnName="Name" />
+            <ScalarProperty Name="Code" ColumnName="Code" />
+            <ScalarProperty Name="Created" ColumnName="Created" />
+            <ScalarProperty Name="Modified" ColumnName="Modified" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Status"><EntityTypeMapping TypeName="OrangeModel.Status"><MappingFragment StoreEntitySet="Status">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="StatusGroupId" ColumnName="StatusGroupId" />
+            <ScalarProperty Name="Code" ColumnName="Code" />
+            <ScalarProperty Name="Created" ColumnName="Created" />
+            <ScalarProperty Name="Modified" ColumnName="Modified" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="StatusGroups"><EntityTypeMapping TypeName="OrangeModel.StatusGroup"><MappingFragment StoreEntitySet="StatusGroups">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="DescriptorId" ColumnName="DescriptorId" />
+            <ScalarProperty Name="Code" ColumnName="Code" />
+            <ScalarProperty Name="Created" ColumnName="Created" />
+            <ScalarProperty Name="Modified" ColumnName="Modified" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="UOMs"><EntityTypeMapping TypeName="OrangeModel.UOM"><MappingFragment StoreEntitySet="UOMs">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+            <ScalarProperty Name="DescriptorId" ColumnName="DescriptorId" />
+            <ScalarProperty Name="Code" ColumnName="Code" />
+            <ScalarProperty Name="Created" ColumnName="Created" />
+            <ScalarProperty Name="Modified" ColumnName="Modified" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="ItemContents"><EntityTypeMapping TypeName="OrangeModel.ItemContent"><MappingFragment StoreEntitySet="ItemContent">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+            <ScalarProperty Name="LanguageId" ColumnName="LanguageId" />
+            <ScalarProperty Name="Name" ColumnName="Name" />
+            <ScalarProperty Name="BriefDescription" ColumnName="BriefDescription" />
+            <ScalarProperty Name="LongDescription" ColumnName="LongDescription" />
+            <ScalarProperty Name="HtmlContent" ColumnName="HtmlContent" />
+            <ScalarProperty Name="Created" ColumnName="Created" />
+            <ScalarProperty Name="Modified" ColumnName="Modified" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Items"><EntityTypeMapping TypeName="OrangeModel.Item"><MappingFragment StoreEntitySet="Items">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+            <ScalarProperty Name="UomId" ColumnName="UomId" />
+            <ScalarProperty Name="Code" ColumnName="Code" />
+            <ScalarProperty Name="Revision" ColumnName="Revision" />
+            <ScalarProperty Name="IsPurchased" ColumnName="IsPurchased" />
+            <ScalarProperty Name="IsManufactured" ColumnName="IsManufactured" />
+            <ScalarProperty Name="IsSaleable" ColumnName="IsSaleable" />
+            <ScalarProperty Name="IsDigital" ColumnName="IsDigital" />
+            <ScalarProperty Name="IsUnlimitedQuantity" ColumnName="IsUnlimitedQuantity" />
+            <ScalarProperty Name="Created" ColumnName="Created" />
+            <ScalarProperty Name="Modified" ColumnName="Modified" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="ItemBasePricings"><EntityTypeMapping TypeName="OrangeModel.ItemBasePricing"><MappingFragment StoreEntitySet="ItemBasePricing">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+            <ScalarProperty Name="CurrencyId" ColumnName="CurrencyId" />
+            <ScalarProperty Name="PerUnitPrice" ColumnName="PerUnitPrice" />
+            <ScalarProperty Name="Created" ColumnName="Created" />
+            <ScalarProperty Name="Modified" ColumnName="Modified" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="ItemCatalogs">
+            <EntityTypeMapping TypeName="OrangeModel.ItemCatalog">
+              <MappingFragment StoreEntitySet="ItemCatalogs">
+                <ScalarProperty Name="Modified" ColumnName="Modified" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+                <ScalarProperty Name="LanguageDescriptorId" ColumnName="LanguageDescriptorId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ItemCategories">
+            <EntityTypeMapping TypeName="OrangeModel.ItemCategory">
+              <MappingFragment StoreEntitySet="ItemCategories">
+                <ScalarProperty Name="Modified" ColumnName="Modified" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="LanguageDescriptorId" ColumnName="LanguageDescriptorId" />
+                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ItemCategoryHierarchyMaps">
+            <EntityTypeMapping TypeName="OrangeModel.ItemCategoryHierarchyMap">
+              <MappingFragment StoreEntitySet="ItemCategoryHierarchyMap">
+                <ScalarProperty Name="ItemCategoryRefId" ColumnName="ItemCategoryRefId" />
+                <ScalarProperty Name="ItemCategoryId" ColumnName="ItemCategoryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="ItemCatalogMap" TypeName="OrangeModel.ItemCatalogMap" StoreEntitySet="ItemCatalogMap">
+            <EndProperty Name="Item">
+              <ScalarProperty Name="Id" ColumnName="ItemId" />
+            </EndProperty>
+            <EndProperty Name="ItemCatalog">
+              <ScalarProperty Name="Id" ColumnName="ItemCatalogId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="ItemCategoryMap" TypeName="OrangeModel.ItemCategoryMap" StoreEntitySet="ItemCategoryMap">
+            <EndProperty Name="Item">
+              <ScalarProperty Name="Id" ColumnName="ItemId" />
+            </EndProperty>
+            <EndProperty Name="ItemCategory">
+              <ScalarProperty Name="Id" ColumnName="ItemCategoryId" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="DataModel">
+        <EntityTypeShape EntityType="OrangeModel.Currency" Width="1.5" PointX="5.25" PointY="5.625" Height="2.7494921874999996" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrangeModel.Descriptor" Width="1.5" PointX="3" PointY="4" Height="1.9802864583333335" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrangeModel.LanguageDescriptor" Width="1.5" PointX="5.75" PointY="0.75" Height="2.5571907552083335" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrangeModel.Language" Width="1.5" PointX="5.25" PointY="9.5" Height="2.5571907552083317" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrangeModel.Status" Width="1.5" PointX="3" PointY="7.5" Height="2.9417936197916648" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrangeModel.StatusGroup" Width="1.5" PointX="0.75" PointY="7.875" Height="2.1725878906249996" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrangeModel.UOM" Width="1.5" PointX="5.25" PointY="12.875" Height="2.5571907552083317" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrangeModel.ItemContent" Width="1.5" PointX="7.5" PointY="9.25" Height="3.1340950520833317" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrangeModel.Item" Width="1.5" PointX="10.5" PointY="9.375" Height="4.0956022135416674" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrangeModel.ItemBasePricing" Width="1.5" PointX="12.75" PointY="8.25" Height="2.5571907552083353" IsExpanded="true" />
+        <AssociationConnector Association="OrangeModel.FK_Currencies_Descriptors" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="5.8987939453125" />
+          <ConnectorPoint PointX="5.25" PointY="5.8987939453125" />
+        </AssociationConnector>
+        <AssociationConnector Association="OrangeModel.FK_Currencies_Status" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="7.93724609375" />
+          <ConnectorPoint PointX="5.25" PointY="7.93724609375" />
+        </AssociationConnector>
+        <AssociationConnector Association="OrangeModel.FK_ItemBasePricing_Currencies" ManuallyRouted="false">
+          <ConnectorPoint PointX="6.75" PointY="7.8482970260416662" />
+          <ConnectorPoint PointX="7.0602243229166666" PointY="7.8482970260416653" />
+          <ConnectorPoint PointX="7.2268909895833326" PointY="7.8482970260416662" />
+          <ConnectorPoint PointX="9.1979166666666661" PointY="7.8482970260416653" />
+          <ConnectorPoint PointX="9.5052108333333347" PointY="7.8482970260416662" />
+          <ConnectorPoint PointX="11.604166666666666" PointY="7.8482970260416653" />
+          <ConnectorPoint PointX="11.770833333333334" PointY="7.8482970260416662" />
+          <ConnectorPoint PointX="12.197916666666666" PointY="7.8482970260416653" />
+          <ConnectorPoint PointX="12.364583333333334" PointY="7.8482970260416662" />
+          <ConnectorPoint PointX="12.96875" PointY="7.8482970260416662" />
+          <ConnectorPoint PointX="12.96875" PointY="8.25" />
+        </AssociationConnector>
+        <AssociationConnector Association="OrangeModel.FK_ItemContent_Languages" ManuallyRouted="false">
+          <ConnectorPoint PointX="6.75" PointY="10.87474609375" />
+          <ConnectorPoint PointX="7.5" PointY="10.87474609375" />
+        </AssociationConnector>
+        <AssociationConnector Association="OrangeModel.FK_Languages_Status" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="10.1631982421875" />
+          <ConnectorPoint PointX="5.25" PointY="10.1631982421875" />
+        </AssociationConnector>
+        <AssociationConnector Association="OrangeModel.FK_Items_Status" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="8.81224609375" />
+          <ConnectorPoint PointX="7.0602243229166666" PointY="8.81224609375" />
+          <ConnectorPoint PointX="7.2268909895833326" PointY="8.81224609375" />
+          <ConnectorPoint PointX="9.3385441666666669" PointY="8.81224609375" />
+          <ConnectorPoint PointX="9.5052108333333347" PointY="8.81224609375" />
+          <ConnectorPoint PointX="11.25" PointY="8.81224609375" />
+          <ConnectorPoint PointX="11.25" PointY="9.375" />
+        </AssociationConnector>
+        <AssociationConnector Association="OrangeModel.FK_Status_StatusGroups" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="8.9612939453125" />
+          <ConnectorPoint PointX="3" PointY="8.9612939453125" />
+        </AssociationConnector>
+        <AssociationConnector Association="OrangeModel.FK_UOMs_Status" ManuallyRouted="false">
+          <ConnectorPoint PointX="3.75" PointY="10.826396484375" />
+          <ConnectorPoint PointX="3.75" PointY="14.153595377604166" />
+          <ConnectorPoint PointX="5.25" PointY="14.153595377604166" />
+        </AssociationConnector>
+        <AssociationConnector Association="OrangeModel.FK_Items_UOMs" ManuallyRouted="false">
+          <ConnectorPoint PointX="6.75" PointY="13.3651025390625" />
+          <ConnectorPoint PointX="10.5" PointY="13.3651025390625" />
+        </AssociationConnector>
+        <AssociationConnector Association="OrangeModel.FK_ItemContent_Items" ManuallyRouted="false">
+          <ConnectorPoint PointX="10.5" PointY="10.879547526041666" />
+          <ConnectorPoint PointX="9.5052108333333347" PointY="10.879547526041666" />
+          <ConnectorPoint PointX="9.3385441666666669" PointY="10.879547526041666" />
+          <ConnectorPoint PointX="9" PointY="10.879547526041666" />
+        </AssociationConnector>
+        <AssociationConnector Association="OrangeModel.FK_ItemBasePricing_Items" ManuallyRouted="false">
+          <ConnectorPoint PointX="12" PointY="10.091095377604168" />
+          <ConnectorPoint PointX="12.75" PointY="10.091095377604168" />
+        </AssociationConnector>
+        <AssociationConnector Association="OrangeModel.FK_LanguageDescriptors_Descriptors" >
+          <ConnectorPoint PointX="4.5" PointY="4.8194487421875" />
+          <ConnectorPoint PointX="6.9746103124999994" PointY="4.8194487421875" />
+          <ConnectorPoint PointX="6.9746103124999994" PointY="4.076396484375" />
+        </AssociationConnector>
+        <AssociationConnector Association="OrangeModel.FK_LanguageDescriptors_Languages" >
+          <ConnectorPoint PointX="6.75" PointY="10.351400683593749" />
+          <ConnectorPoint PointX="7.14355765625" PointY="10.351400683593749" />
+          <ConnectorPoint PointX="7.14355765625" PointY="4.076396484375" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="OrangeModel.ItemCatalog" Width="1.5" PointX="8" PointY="4.375" Height="2.7494921875000031" />
+        <EntityTypeShape EntityType="OrangeModel.ItemCategory" Width="1.5" PointX="11" PointY="4.25" Height="3.1340950520833317" />
+        <EntityTypeShape EntityType="OrangeModel.ItemCategoryHierarchyMap" Width="1.5" PointX="13.25" PointY="4.875" Height="1.7879850260416674" />
+        <AssociationConnector Association="OrangeModel.FK_ItemCatalogs_LanguageDescriptors" >
+          <ConnectorPoint PointX="7.25" PointY="2.4131982421875" />
+          <ConnectorPoint PointX="8.75" PointY="2.4131982421875" />
+          <ConnectorPoint PointX="8.75" PointY="4.375" />
+        </AssociationConnector>
+        <AssociationConnector Association="OrangeModel.FK_ItemCategories_LanguageDescriptors" >
+          <ConnectorPoint PointX="7.25" PointY="3.2760498632812496" />
+          <ConnectorPoint PointX="8.6666666666666661" PointY="3.2760498632812491" />
+          <ConnectorPoint PointX="8.8333333333333339" PointY="3.2760498632812496" />
+          <ConnectorPoint PointX="11.75" PointY="3.2760498632812496" />
+          <ConnectorPoint PointX="11.75" PointY="4.25" />
+        </AssociationConnector>
+        <AssociationConnector Association="OrangeModel.FK_ItemCatalogs_Status" >
+          <ConnectorPoint PointX="4.5" PointY="8.593366640625" />
+          <ConnectorPoint PointX="7.0602243229166666" PointY="8.593366640625" />
+          <ConnectorPoint PointX="7.2268909895833326" PointY="8.593366640625" />
+          <ConnectorPoint PointX="9.28125" PointY="8.593366640625" />
+          <ConnectorPoint PointX="9.28125" PointY="7.1244921875000031" />
+        </AssociationConnector>
+        <AssociationConnector Association="OrangeModel.FK_ItemCategories_Status" >
+          <ConnectorPoint PointX="4.5" PointY="9.031125546875" />
+          <ConnectorPoint PointX="7.0602243229166666" PointY="9.031125546875" />
+          <ConnectorPoint PointX="7.2268909895833326" PointY="9.031125546875" />
+          <ConnectorPoint PointX="9.3385441666666669" PointY="9.031125546875" />
+          <ConnectorPoint PointX="9.5052108333333347" PointY="9.031125546875" />
+          <ConnectorPoint PointX="11.166666666666666" PointY="9.031125546875" />
+          <ConnectorPoint PointX="11.333333333333334" PointY="9.031125546875" />
+          <ConnectorPoint PointX="11.604166666666666" PointY="9.031125546875" />
+          <ConnectorPoint PointX="11.770833333333334" PointY="9.031125546875" />
+          <ConnectorPoint PointX="12.28125" PointY="9.031125546875" />
+          <ConnectorPoint PointX="12.28125" PointY="7.3840950520833317" />
+        </AssociationConnector>
+        <AssociationConnector Association="OrangeModel.FK_ItemCategoryHierarchyMap_ItemCategories" >
+          <ConnectorPoint PointX="12.5" PointY="5.7689925130208337" />
+          <ConnectorPoint PointX="13.25" PointY="5.7689925130208337" />
+        </AssociationConnector>
+        <AssociationConnector Association="OrangeModel.FK_ItemCategoryHierarchyMap_ItemCategories1" >
+          <ConnectorPoint PointX="12.5" PointY="5.2594962565104169" />
+          <ConnectorPoint PointX="13.25" PointY="5.2594962565104169" />
+        </AssociationConnector>
+        <AssociationConnector Association="OrangeModel.ItemCatalogMap" >
+          <ConnectorPoint PointX="9.4218775" PointY="7.1244921875000031" />
+          <ConnectorPoint PointX="9.4218775" PointY="12.874596295572914" />
+          <ConnectorPoint PointX="10.5" PointY="12.874596295572914" />
+        </AssociationConnector>
+        <AssociationConnector Association="OrangeModel.ItemCategoryMap" >
+          <ConnectorPoint PointX="11.6875" PointY="7.3840950520833317" />
+          <ConnectorPoint PointX="11.6875" PointY="9.375" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>
